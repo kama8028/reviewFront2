@@ -28,7 +28,7 @@ function StartPage() {
       <tbody>
         <tr id="order1" value="1">
           <th id="date">2022-05-13</th>
-          <td id="item">친환경노트</td>
+          <td id="item" value="친환경노트">친환경노트</td>
           <td id="deliveryState">배송완료<br></br><button onClick={ReviewButton}>리뷰등록</button></td>
         </tr>
         <tr id="order2" value="2">
