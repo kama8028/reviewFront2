@@ -2,24 +2,34 @@ import { useState } from 'react'
 
 const Save = (params, e) => {
   let reviewDescription1 = document.getElementById("reviewDescription").value
-  let satisfactionType = document.getElementById("satisfaction2").value
+
+  console.log(params)
+  console.log(params.satisfaction1.satisfaction)
+
   return (
-    console.log(params.orderItemId+reviewDescription1+satisfactionType)
+    console.log(params.orderItemId+reviewDescription1+params.satisfaction1.satisfaction)
+
   )
 }
 
+
 const Review = () => {
   let product = "친환경노트";
+  const [satisfaction, setSatisfaction] = useState("GOOD");
 
   const params = {
     memberId : "1",
     orderItemId : "1",
-    product : "친환경노트"
+    product : "친환경노트",
+    satisfaction1 : {satisfaction}
   };
 
-  function handleChange(e) {
-
+  const radioClick = (params) => {
+    console.log(params)
+    setSatisfaction(params)
+    console.log(satisfaction)
   }
+
   return (
     <>
       <div style={{width:"800px",height:"1000px"}}>
@@ -33,18 +43,9 @@ const Review = () => {
       <br></br>
       <div>
         <strong>상품만족도</strong>&nbsp;&nbsp;
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="satisfaction1" value="GOOD"/>
-        <label class="form-check-label" for="flexRadioDefault1">
-        &nbsp;좋음&nbsp;
-        </label>
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="satisfaction2" value="NORMAL"/>
-        <label class="form-check-label" for="flexRadioDefault2">
-        &nbsp;보통&nbsp;
-        </label>
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="satisfaction3" value="BAD"/>
-        <label class="form-check-label" for="flexRadioDefault3">
-        &nbsp;나쁨&nbsp;
-        </label>
+        <label><input class="form-check-input" type="radio" name="satisfaction" id="satisfaction" value="GOOD" onClick={() => radioClick("GOOD")}/>&nbsp;좋음&nbsp;</label>
+        <label><input class="form-check-input" type="radio" name="satisfaction" id="satisfaction" value="NORMAL" onClick={() => radioClick("NORMAL")}/>&nbsp;보통&nbsp;</label>
+        <label><input class="form-check-input" type="radio" name="satisfaction" id="satisfaction" value="BAD" onClick={() => radioClick("BAD")}/>&nbsp;나쁨&nbsp;</label>
       </div>
       <br></br>
       <strong>리뷰 작성란</strong>&nbsp;&nbsp;
